@@ -1,9 +1,13 @@
 import streamlit as st
-import undetected_chromedriver as uc
+import undetected_chromedriver.v2 as uc
 
 def run_selenium():
-    # Start the undetected Chrome WebDriver
-    driver = uc.Chrome()
+    # Start the undetected Chrome WebDriver in headless mode
+    options = uc.ChromeOptions()
+    options.add_argument('--headless')  # Run in headless mode
+    options.add_argument('--no-sandbox')  # Bypass OS security model
+    options.add_argument('--disable-dev-shm-usage')  # Overcome limited resource problems
+    driver = uc.Chrome(options=options)
 
     # Example: Navigate to TikTok
     driver.get('https://www.tiktok.com')
