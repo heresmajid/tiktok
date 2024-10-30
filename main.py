@@ -1,5 +1,6 @@
 import undetected_chromedriver as uc
-from undetected_chromedriver import ChromeOptions
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
@@ -50,14 +51,15 @@ domain_link = "https://www.tiktok.com/"
 
 if st.button("Start Scraping") and output_filename:
     # initializing bot instance
-    options = ChromeOptions()
-    options.binary_location = os.path.abspath('chromedriver.exe')
-    options.add_argument(f'user-agent={user_agent}')
-    options.add_argument("--disable-blink-features=AutomationControlled")  # Remove the automation flag
-    options.add_argument("--disable-extensions")
-    options.add_argument("--disable-infobars")
+    # options = uc.ChromeOptions()
+    # options.binary_location = os.path.abspath('chromedriver.exe')
+    # options.add_argument(f'user-agent={user_agent}')
+    # options.add_argument("--disable-blink-features=AutomationControlled")  # Remove the automation flag
+    # options.add_argument("--disable-extensions")
+    # options.add_argument("--disable-infobars")
 
-    driver = uc.Chrome(driver_executable_path=os.path.abspath('chromedriver.exe'), options=options, headless=False) # if you don't want to see Graphical User Interface, You can use headless=True
+    # driver = uc.Chrome(driver_executable_path=os.path.abspath('chromedriver.exe'), options=options, headless=False) # if you don't want to see Graphical User Interface, You can use headless=True
+    driver = webdriver.Chrome()
     driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": user_agent})
     driver.maximize_window()
 
