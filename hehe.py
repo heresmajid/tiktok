@@ -1,5 +1,5 @@
 import streamlit as st
-import undetected_chromedriver.v2 as uc
+import undetected_chromedriver as uc
 
 def run_selenium():
     # Start the undetected Chrome WebDriver in headless mode
