@@ -51,6 +51,7 @@ domain_link = "https://www.tiktok.com/"
 if st.button("Start Scraping") and output_filename:
     # initializing bot instance
     options = ChromeOptions()
+    options.binary_location = os.path.abspath('chromedriver.exe')
     options.add_argument(f'user-agent={user_agent}')
     options.add_argument("--disable-blink-features=AutomationControlled")  # Remove the automation flag
     options.add_argument("--disable-extensions")
